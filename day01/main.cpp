@@ -13,7 +13,6 @@ int part1()
     size_t sum = 0;
 
     while(std::getline(file, buffer)) {
-
         if(buffer.size() == 0) {
             if(max < sum) {
                 max = sum;
@@ -35,7 +34,6 @@ int part2()
     size_t sum = 0;
 
     while(std::getline(file, buffer)) {
-
         if(buffer.size() == 0) {
             snacks.push_back(sum);   
             sum = 0;
