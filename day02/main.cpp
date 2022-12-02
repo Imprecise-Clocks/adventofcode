@@ -73,16 +73,14 @@ int part2()
 
         score += myResult;
 
+        if(myResult == Result::Draw) score += opponent;
+        
         if(myResult == Result::Loss) {
             if(opponent == RPS::Rock) score += RPS::Siccor;
             if(opponent == RPS::Paper) score += RPS::Rock;
             if(opponent == RPS::Siccor) score += RPS::Paper;
         }
-        if(myResult == Result::Draw) {
-            if(opponent == RPS::Rock) score += RPS::Rock;
-            if(opponent == RPS::Paper) score += RPS::Paper;
-            if(opponent == RPS::Siccor) score += RPS::Siccor;
-        }
+
         if(myResult == Result::Win) {
             if(opponent == RPS::Rock) score += RPS::Paper;
             if(opponent == RPS::Paper) score += RPS::Siccor;
