@@ -27,34 +27,14 @@ int part1()
         RPS opponent = (RPS) (buffer.at(0) - 'A' + 1);
         RPS me = (RPS) (buffer.at(2) - 'X' + 1);
 
-        if(me == opponent) {
-            score += Result::Draw + me;
-            continue;
-        }
-        if(me == RPS::Rock && opponent == RPS::Paper) {
-            score += Result::Loss + me;
-            continue;
-        }
-        if(me == RPS::Paper && opponent == RPS::Rock) {
-            score += Result::Win + me;
-            continue;
-        }
-        if(me == RPS::Siccor && opponent == RPS::Rock) {
-            score += Result::Loss + me;
-            continue;
-        }
-        if(me == RPS::Rock && opponent == RPS::Siccor) {
-            score += Result::Win + me;
-            continue;
-        }
-        if(me == RPS::Paper && opponent == RPS::Siccor) {
-            score += Result::Loss + me;
-            continue;
-        }
-        if(me == RPS::Siccor && opponent == RPS::Paper) {
-            score += Result::Win + me;
-            continue;
-        }
+        if(me == opponent) score += Result::Draw + me;
+        
+        else if(me == RPS::Rock && opponent == RPS::Paper)      score += Result::Loss + me;
+        else if(me == RPS::Paper && opponent == RPS::Rock)      score += Result::Win + me;
+        else if(me == RPS::Siccor && opponent == RPS::Rock)     score += Result::Loss + me;
+        else if(me == RPS::Rock && opponent == RPS::Siccor)     score += Result::Win + me;
+        else if(me == RPS::Paper && opponent == RPS::Siccor)    score += Result::Loss + me;
+        else if(me == RPS::Siccor && opponent == RPS::Paper)    score += Result::Win + me;
     }
 
     return score;
