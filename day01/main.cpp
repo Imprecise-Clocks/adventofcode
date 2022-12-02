@@ -28,7 +28,7 @@ int part1()
 int part2()
 {
     std::ifstream file;
-    file.open("input2.txt");
+    file.open("input1.txt");
     std::string buffer;
     std::vector<size_t> snacks;
     size_t sum = 0;

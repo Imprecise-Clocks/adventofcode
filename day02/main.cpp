@@ -63,14 +63,14 @@ int part1()
 int part2()
 {
     std::ifstream file;
-    file.open("input2.txt");
+    file.open("input1.txt");
     std::string buffer;
     size_t score = 0;
 
     while(std::getline(file, buffer)) {
         RPS opponent = (RPS) (buffer.at(0) - 'A' + 1);
         Result myResult = (Result) ((buffer.at(2) - 'X') * 3);
-        
+
         score += myResult;
 
         if(myResult == Result::Loss) {
