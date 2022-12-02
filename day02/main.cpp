@@ -19,7 +19,7 @@ enum Result
 size_t calculateResult(RPS player1, RPS player2)
 {   
     if(player1 == player2) return Result::Draw;
-    if(((player2 - player1) % 3) == 1) return Result::Win;
+    if(((player2 > player1)*((player2 + player1) % 3) + (player1 > player2)*(player1 - player2)) == 1) return Result::Win;
     return Result::Loss;
 }
 
@@ -54,18 +54,8 @@ int part2()
         score += myResult;
 
         if(myResult == Result::Draw) score += opponent;
-        
-        else if(myResult == Result::Loss) {
-            if(opponent == RPS::Rock) score += RPS::Siccor;
-            else if(opponent == RPS::Paper) score += RPS::Rock;
-            else if(opponent == RPS::Siccor) score += RPS::Paper;
-        }
-
-        else if(myResult == Result::Win) {
-            if(opponent == RPS::Rock) score += RPS::Paper;
-            else if(opponent == RPS::Paper) score += RPS::Siccor;
-            else if(opponent == RPS::Siccor) score += RPS::Rock;
-        }
+        else if(myResult == Result::Loss) score += opponent + 2 > 3 ? (opponent + 2) % 3 : opponent + 2;
+        else if(myResult == Result::Win) score += opponent + 1 > 3 ? (opponent + 1) % 3 : opponent + 1;
     }
 
     return score;
