@@ -16,6 +16,13 @@ enum Result
     Loss = 0
 };
 
+size_t calculateResult(RPS player1, RPS player2)
+{   
+    if(player1 == player2) return Result::Draw;
+    if(((player2 - player1) % 3) == 1) return Result::Win;
+    return Result::Loss;
+}
+
 int part1()
 {
     std::ifstream file;
@@ -27,14 +34,7 @@ int part1()
         RPS opponent = (RPS) (buffer.at(0) - 'A' + 1);
         RPS me = (RPS) (buffer.at(2) - 'X' + 1);
 
-        if(me == opponent) score += Result::Draw + me;
-        
-        else if(me == RPS::Rock && opponent == RPS::Paper)      score += Result::Loss + me;
-        else if(me == RPS::Paper && opponent == RPS::Rock)      score += Result::Win + me;
-        else if(me == RPS::Siccor && opponent == RPS::Rock)     score += Result::Loss + me;
-        else if(me == RPS::Rock && opponent == RPS::Siccor)     score += Result::Win + me;
-        else if(me == RPS::Paper && opponent == RPS::Siccor)    score += Result::Loss + me;
-        else if(me == RPS::Siccor && opponent == RPS::Paper)    score += Result::Win + me;
+        score += me + calculateResult(me, opponent);
     }
 
     return score;
@@ -71,7 +71,7 @@ int part2()
     return score;
 }
 
-int main(int argc, char** argv) 
+int main() 
 {
     std::cout << "The answer to part 1: " << part1() << std::endl;
     std::cout << "The answer to part 2: " << part2() << std::endl;
