@@ -34,3 +34,6 @@
 
 # VSCode
 .vscode/
+
+# Olli's code
+*.js
