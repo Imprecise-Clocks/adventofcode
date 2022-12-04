@@ -29,8 +29,8 @@ std::vector<int> get_section_ids(const std::string& buffer)
 {
         char delimiter = ',';
         std::vector<std::string> sections;
-        std::vector<int> sectionID;
         std::vector<std::string> sectionIDs;
+        std::vector<int> sectionID;
         
         tokenize(buffer, delimiter, sections);
         
