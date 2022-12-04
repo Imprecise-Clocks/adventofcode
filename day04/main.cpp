@@ -30,7 +30,7 @@ std::vector<int> get_section_ids(const std::string& buffer)
         char delimiter = ',';
         std::vector<std::string> sections;
         std::vector<std::string> sectionIDs;
-        std::vector<int> sectionID;
+        std::vector<int> ids;
         
         tokenize(buffer, delimiter, sections);
         
@@ -39,9 +39,9 @@ std::vector<int> get_section_ids(const std::string& buffer)
             tokenize(section, delimiter, sectionIDs);
         }
         for(auto& id : sectionIDs) {
-            sectionID.push_back(std::stoi(id));
+            ids.push_back(std::stoi(id));
         }
-        return sectionID;
+        return ids;
 }
 
 int part1()
