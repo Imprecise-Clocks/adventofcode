@@ -37,6 +37,8 @@ int part1()
 
         sum += char2priority(intersection.at(0));
     }
+    file.close();
+    
     return sum;
 }
 
@@ -74,6 +76,7 @@ int part2()
             group.clear();
         }
     }
+    file.close();
 
     return sum;
 }

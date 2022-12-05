@@ -36,6 +36,7 @@ int part1()
 
         score += me + calculateResult(me, opponent);
     }
+    file.close();
 
     return score;
 }
@@ -57,6 +58,7 @@ int part2()
         else if(myResult == Result::Loss) score += opponent + 2 > 3 ? (opponent + 2) % 3 : opponent + 2;
         else if(myResult == Result::Win) score += opponent + 1 > 3 ? (opponent + 1) % 3 : opponent + 1;
     }
+    file.close();
 
     return score;
 }

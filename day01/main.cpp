@@ -22,6 +22,8 @@ int part1()
         }
         sum += std::stoi(buffer);
     }
+    file.close();
+
     return max;
 }
 
@@ -41,6 +43,8 @@ int part2()
         }
         sum += std::stoi(buffer);
     }
+    file.close();
+    
     std::sort(snacks.begin(), snacks.end(), [](size_t a, size_t b) {
         return a > b;
     });

@@ -56,6 +56,7 @@ int part1()
         
         sum += is_full_sub_section(sectionID.at(0), sectionID.at(1), sectionID.at(2), sectionID.at(3));
     }
+    file.close();
     return sum;
 }
 
@@ -71,6 +72,7 @@ int part2()
 
         sum += is_sub_section(sectionID.at(0), sectionID.at(1), sectionID.at(2), sectionID.at(3));
     }
+    file.close();
     return sum;
 }
 
