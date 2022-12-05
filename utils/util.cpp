@@ -1,3 +1,5 @@
+#include "util.h"
+
 template <typename T>
 void reverse(std::vector<T> &vec)
 {
@@ -8,7 +10,7 @@ void reverse(std::vector<T> &vec)
     vec = temp;
 }
 
-void tokenize(std::string const &str, const char delim, std::vector<std::string> &out)
+void tokenize(const std::string &str, const char delim, std::vector<std::string> &out)
 {
     size_t start;
     size_t end = 0;

@@ -2,18 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-
-void tokenize(std::string const &str, const char delim, std::vector<std::string> &out)
-{
-    size_t start;
-    size_t end = 0;
-
-    while ((start = str.find_first_not_of(delim, end)) != std::string::npos)
-    {
-        end = str.find(delim, start);
-        out.push_back(str.substr(start, end - start));
-    }
-}
+#include "../utils/util.h"
 
 size_t get_stack_index(size_t n)
 {
@@ -40,7 +29,6 @@ void load_stack(std::vector<std::vector<char>>& stack, std::ifstream& file)
     std::getline(file, buffer);
     std::getline(file, buffer);
 }
-
 
 std::string part1()
 {
