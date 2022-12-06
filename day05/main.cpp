@@ -42,7 +42,7 @@ std::string part1()
     while(std::getline(file, buffer)) {
         std::vector<std::string> instructions;
         char delimiter = ' ';
-        tokenize(buffer, delimiter, instructions);
+        util::tokenize(buffer, delimiter, instructions);
         size_t move = std::stoi(instructions.at(1));
         size_t from = std::stoi(instructions.at(3)) - 1;
         size_t to = std::stoi(instructions.at(5)) - 1;
@@ -75,7 +75,7 @@ std::string part2()
     while(std::getline(file, buffer)) {
         std::vector<std::string> instructions;
         char delimiter = ' ';
-        tokenize(buffer, delimiter, instructions);
+        util::tokenize(buffer, delimiter, instructions);
         size_t move = std::stoi(instructions.at(1));
         size_t from = std::stoi(instructions.at(3)) - 1;
         size_t to = std::stoi(instructions.at(5)) - 1;

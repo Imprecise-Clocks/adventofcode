@@ -21,11 +21,11 @@ std::vector<int> get_section_ids(const std::string& buffer)
         std::vector<std::string> sectionIDs;
         std::vector<int> ids;
         
-        tokenize(buffer, delimiter, sections);
+        util::tokenize(buffer, delimiter, sections);
         
         for(auto& section : sections) {
             delimiter = '-';
-            tokenize(section, delimiter, sectionIDs);
+            util::tokenize(section, delimiter, sectionIDs);
         }
         for(auto& id : sectionIDs) {
             ids.push_back(std::stoi(id));
