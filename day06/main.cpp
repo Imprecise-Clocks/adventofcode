@@ -1,16 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <bits/stdc++.h>
-
-bool is_unique(const std::string& string)
-{
-    std::set<char> characters;
-    for(char c : string) {
-        characters.insert(c);
-    }
-    return characters.size() == string.size();
-}
+#include "../utils/util.h"
 
 size_t part1()
 {
@@ -21,7 +12,7 @@ size_t part1()
 
     while(std::getline(file, buffer)) {
         for(size_t i = 0; i < buffer.size(); ++i) {
-            if(is_unique(buffer.substr(i, result))) {
+            if(util::is_unique(buffer.substr(i, result))) {
                 result += i;
                 break;
             }
@@ -41,7 +32,7 @@ size_t part2()
 
     while(std::getline(file, buffer)) {
         for(size_t i = 0; i < buffer.size(); ++i) {
-            if(is_unique(buffer.substr(i, result))) {
+            if(util::is_unique(buffer.substr(i, result))) {
                 result += i;
                 break;
             }
