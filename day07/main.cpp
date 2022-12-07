@@ -41,16 +41,16 @@ public:
     std::vector<File*> files;
 
     void addFolder(Folder* new_folder) { 
-        for(size_t i = 0; i < this->folders.size(); ++i) {
-            if(this->folders.at(i)->name == new_folder->name) {
+        for(auto folder : this->folders) {
+            if(folder->name == new_folder->name) {
                 return;
             }
         }
         this->folders.push_back(new_folder);
     }
     void addFile(File* new_file) {
-        for(size_t i = 0; i < this->files.size(); ++i) {
-            if(this->files.at(i)->name == new_file->name) {
+        for(auto file : this->files) {
+            if(file->name == new_file->name) {
                 return;
             }
         }
