@@ -116,12 +116,12 @@ void ls(Folder* current, std::ifstream& file)
 Folder* cd_root(Folder* current)
 {
     if(current->upper == nullptr) return current;
-    cd_root(current->upper);
+    return cd_root(current->upper);
 }
 
 size_t get_folder_size_max(Folder* current, size_t max)
 {
-    static size_t size = 0;
+    static size_t size = std::numeric_limits<size_t>::lowest();
     for(auto folder : current->folders) {
         get_folder_size_max(folder, max);
     }
@@ -131,7 +131,7 @@ size_t get_folder_size_max(Folder* current, size_t max)
 
 size_t smallest_folder(Folder* current, size_t min)
 {
-    static size_t smallest = 70000000;
+    static size_t smallest = std::numeric_limits<size_t>::max();
     for(auto folder : current->folders) {
         smallest_folder(folder, min);
     }
@@ -169,7 +169,7 @@ size_t part1()
     current->calcSize();
 
     sum = get_folder_size_max(current, max_size);
-    
+
     delete current;
     return sum;
 }
