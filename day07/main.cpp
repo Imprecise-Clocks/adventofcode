@@ -6,7 +6,7 @@
 #include "../utils/util.h"
 
 class File
-{   
+{
 public:
     File(const std::string& name) {
         File(name, 0);
@@ -146,7 +146,7 @@ size_t part1()
     file.open("input1.txt");
     std::string buffer;
     size_t max_size = 100000;
-    size_t sum = 0;
+    size_t result = 0;
     Folder* current = new Folder("/", nullptr);
 
     while(std::getline(file, buffer)) {
@@ -167,10 +167,10 @@ size_t part1()
     current = current->get_root();
     current->calc_size();
 
-    sum = get_sum_folder_size_below_max(current, max_size);
+    result = get_sum_folder_size_below_max(current, max_size);
 
     delete current;
-    return sum;
+    return result;
 }
 
 size_t part2()
@@ -180,7 +180,7 @@ size_t part2()
     std::string buffer;
     size_t disk_space = 70000000;
     size_t update_size = 30000000;
-    size_t sum = 0;
+    size_t result = 0;
     size_t min_size;
 
     Folder* current = new Folder("/", nullptr);
@@ -204,10 +204,10 @@ size_t part2()
     current->calc_size();
 
     min_size = update_size - (disk_space - current->size);
-    sum = smallest_folder_above_min(current, min_size);
+    result = smallest_folder_above_min(current, min_size);
 
     delete current;
-    return sum;
+    return result;
 }
 
 int main() 
