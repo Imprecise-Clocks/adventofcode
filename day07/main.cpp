@@ -2,8 +2,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <memory>
-#include <bits/stdc++.h>
 #include <limits>
 #include "../utils/util.h"
 
@@ -121,12 +119,12 @@ Folder* cd_root(Folder* current)
 
 size_t get_sum_folder_size_below_max(Folder* current, size_t max)
 {
-    static size_t size = std::numeric_limits<size_t>::lowest();
+    static size_t sum = std::numeric_limits<size_t>::lowest();
     for(auto folder : current->folders) {
         get_sum_folder_size_below_max(folder, max);
     }
-    size += current->size <= max ? current->size : 0; 
-    return size;
+    sum += current->size <= max ? current->size : 0; 
+    return sum;
 }
 
 size_t smallest_folder_above_min(Folder* current, size_t min)
