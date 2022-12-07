@@ -81,7 +81,6 @@ public:
     }
 };
 
-
 Folder* cd(const std::vector<std::string>& command, Folder* current)
 {
     if(command.at(0) != "$") return nullptr;
@@ -148,7 +147,7 @@ size_t part1()
     file.open("input1.txt");
     std::string buffer;
     size_t max_size = 100000;
-
+    size_t sum = 0;
     Folder* current = new Folder("/", nullptr);
 
     while(std::getline(file, buffer)) {
@@ -165,9 +164,14 @@ size_t part1()
         }
     }
     file.close();
+    
     current = cd_root(current);
     current->calcSize();
-    return get_folder_size_max(current, max_size);
+
+    sum = get_folder_size_max(current, max_size);
+    
+    delete current;
+    return sum;
 }
 
 size_t part2()
@@ -177,6 +181,7 @@ size_t part2()
     std::string buffer;
     size_t disk_space = 70000000;
     size_t update_size = 30000000;
+    size_t sum = 0;
     size_t min_size;
 
     Folder* current = new Folder("/", nullptr);
@@ -195,10 +200,15 @@ size_t part2()
         }
     }
     file.close();
+
     current = cd_root(current);
     current->calcSize();
+
     min_size = update_size - (disk_space - current->size);
-    return smallest_folder(current, min_size);
+    sum = smallest_folder(current, min_size);
+
+    delete current;
+    return sum;
 }
 
 int main() 
