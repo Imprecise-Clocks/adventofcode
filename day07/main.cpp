@@ -38,7 +38,7 @@ public:
     std::vector<Folder*> folders;
     std::vector<File*> files;
 
-    void addFolder(Folder* new_folder) { 
+    void add_folder(Folder* new_folder) { 
         for(auto folder : this->folders) {
             if(folder->name == new_folder->name) {
                 return;
@@ -46,7 +46,7 @@ public:
         }
         this->folders.push_back(new_folder);
     }
-    void addFile(File* new_file) {
+    void add_file(File* new_file) {
         for(auto file : this->files) {
             if(file->name == new_file->name) {
                 return;
@@ -107,12 +107,12 @@ void ls(Folder* current, std::ifstream& file)
         }
         if(commandline.at(0) == "dir") {
             std::string foldername = commandline.at(1);
-            current->addFolder(new Folder(foldername, current));    
+            current->add_folder(new Folder(foldername, current));    
         }
         else {
             size_t filesize = std::stoi(commandline.at(0));
             std::string filename = commandline.at(1);
-            current->addFile(new File(filename, filesize));
+            current->add_file(new File(filename, filesize));
         }
     }
 }
