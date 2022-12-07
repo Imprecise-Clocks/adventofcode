@@ -119,21 +119,21 @@ Folder* cd_root(Folder* current)
     return cd_root(current->upper);
 }
 
-size_t get_folder_size_max(Folder* current, size_t max)
+size_t get_sum_folder_size_below_max(Folder* current, size_t max)
 {
     static size_t size = std::numeric_limits<size_t>::lowest();
     for(auto folder : current->folders) {
-        get_folder_size_max(folder, max);
+        get_sum_folder_size_below_max(folder, max);
     }
     size += current->size <= max ? current->size : 0; 
     return size;
 }
 
-size_t smallest_folder(Folder* current, size_t min)
+size_t smallest_folder_above_min(Folder* current, size_t min)
 {
     static size_t smallest = std::numeric_limits<size_t>::max();
     for(auto folder : current->folders) {
-        smallest_folder(folder, min);
+        smallest_folder_above_min(folder, min);
     }
     if(current->size > min && current->size < smallest){
         smallest = current->size;
@@ -168,7 +168,7 @@ size_t part1()
     current = cd_root(current);
     current->calcSize();
 
-    sum = get_folder_size_max(current, max_size);
+    sum = get_sum_folder_size_below_max(current, max_size);
 
     delete current;
     return sum;
@@ -205,7 +205,7 @@ size_t part2()
     current->calcSize();
 
     min_size = update_size - (disk_space - current->size);
-    sum = smallest_folder(current, min_size);
+    sum = smallest_folder_above_min(current, min_size);
 
     delete current;
     return sum;
