@@ -67,15 +67,21 @@ public:
         return nullptr;
     }
 
-    void calcSize() {
+    void calc_size() {
         this->size = 0;
         for(auto folder : this->folders) {
-            folder->calcSize();
+            folder->calc_size();
             this->size += folder->size;
         }
         for(auto file : this->files) {
             this->size += file->size;
         }
+    }
+
+    Folder* get_root()
+    {
+        if(this->upper == nullptr) return this;
+        return this->upper->get_root();
     }
 };
 
@@ -111,11 +117,6 @@ void ls(Folder* current, std::ifstream& file)
     }
 }
 
-Folder* cd_root(Folder* current)
-{
-    if(current->upper == nullptr) return current;
-    return cd_root(current->upper);
-}
 
 size_t get_sum_folder_size_below_max(Folder* current, size_t max)
 {
@@ -163,8 +164,8 @@ size_t part1()
     }
     file.close();
     
-    current = cd_root(current);
-    current->calcSize();
+    current = current->get_root();
+    current->calc_size();
 
     sum = get_sum_folder_size_below_max(current, max_size);
 
@@ -199,8 +200,8 @@ size_t part2()
     }
     file.close();
 
-    current = cd_root(current);
-    current->calcSize();
+    current = current->get_root();
+    current->calc_size();
 
     min_size = update_size - (disk_space - current->size);
     sum = smallest_folder_above_min(current, min_size);
