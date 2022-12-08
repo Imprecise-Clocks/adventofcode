@@ -96,8 +96,8 @@ size_t part1()
     }
     file.close();
 
-    size_t rows = trees.size();
-    size_t columns = trees.at(0).size();
+    int rows = trees.size();
+    int columns = trees.at(0).size();
 
     bool tree_map[rows * columns];
     std::fill_n(tree_map, rows*columns, true);
@@ -137,24 +137,20 @@ size_t part2()
     }
     file.close();
 
-    size_t rows = trees.size();
-    size_t columns = trees.at(0).size();
+    int rows = trees.size();
+    int columns = trees.at(0).size();
 
-    size_t tree_map[rows * columns] = {0};
-
+    size_t tree, score;
     for(int row = 1; row < rows - 1; ++row) {
         for(int col = 1; col < columns - 1; ++col) {
-            size_t tree = trees.at(row).at(col);
-            tree_map[(row*columns) + col] = trees_up(tree, trees, row, col) *
-                                            trees_down(tree, trees, row, col) *
-                                            trees_left(tree, trees, row, col) *
-                                            trees_right(tree, trees, row, col);
-        }
-    }
-
-    for(auto score : tree_map) {
-        if(scenic_tree_score < score) {
-            scenic_tree_score = score;
+            tree = trees.at(row).at(col);
+            score = trees_up(tree, trees, row, col) *
+                    trees_down(tree, trees, row, col) *
+                    trees_left(tree, trees, row, col) *
+                    trees_right(tree, trees, row, col);
+            if(score > scenic_tree_score) {
+                scenic_tree_score = score;
+            }
         }
     }
 
