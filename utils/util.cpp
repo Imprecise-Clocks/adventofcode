@@ -1,16 +1,6 @@
 #include "util.h"
 #include <bits/stdc++.h>
 
-template <typename T>
-void util::reverse(std::vector<T> &vec)
-{
-    std::vector<T> temp;
-    for(size_t i = vec.size() - 1; i >= 0; --i) {
-        temp.push_back(vec.at(i));
-    }
-    vec = temp;
-}
-
 void util::tokenize(const std::string &str, const char delim, std::vector<std::string> &out)
 {
     size_t start;
