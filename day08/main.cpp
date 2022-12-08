@@ -48,6 +48,7 @@ size_t trees_up(size_t tree, std::vector<std::vector<size_t>> trees, int row, in
     }
     return --y;
 }
+
 size_t trees_down(size_t tree, std::vector<std::vector<size_t>> trees, int row, int col) {
     size_t y;
     for(y = 1; row + y < trees.size(); ++y) {
@@ -57,6 +58,7 @@ size_t trees_down(size_t tree, std::vector<std::vector<size_t>> trees, int row, 
     }
     return --y;
 }
+
 size_t trees_left(size_t tree, std::vector<std::vector<size_t>> trees, int row, int col) {
     int x;
     for(x = 1; col - x >= 0; ++x) {
@@ -66,6 +68,7 @@ size_t trees_left(size_t tree, std::vector<std::vector<size_t>> trees, int row, 
     }
     return --x;
 }
+
 size_t trees_right(size_t tree, std::vector<std::vector<size_t>> trees, int row, int col) {
     size_t x;
     for(x = 1; col + x < trees.at(row).size(); ++x) {
