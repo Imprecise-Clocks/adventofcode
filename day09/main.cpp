@@ -65,6 +65,7 @@ size_t part1()
     std::ifstream file;
     file.open("input1.txt");
     std::string buffer;
+    
     size_t sum = 0;
     Point head;
     Point tail;
@@ -111,6 +112,7 @@ size_t part2()
     std::ifstream file;
     file.open("input1.txt");
     std::string buffer;
+
     size_t sum = 0;
     const size_t knots = 10;
     std::vector<Point> rope(knots, Point(0,0));
