@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <array>
-#include "../../utils/util.h"
 
 #define UP '^'
 #define DOWN 'v'
