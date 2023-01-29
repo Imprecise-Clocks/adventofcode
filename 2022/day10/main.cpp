@@ -27,7 +27,7 @@ void fetch_instruction(std::string& buffer, std::string& instruction, int& value
 size_t part1()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer; 
     size_t sum = 0;
 
@@ -68,7 +68,7 @@ size_t part1()
 std::string part2()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer; 
 
     size_t cycle_count = 0;

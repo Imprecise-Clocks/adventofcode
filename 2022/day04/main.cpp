@@ -36,7 +36,7 @@ std::vector<int> get_section_ids(const std::string& buffer)
 int part1()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t sum = 0;
 
@@ -52,7 +52,7 @@ int part1()
 int part2()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t sum = 0;
 

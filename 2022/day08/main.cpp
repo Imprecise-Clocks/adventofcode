@@ -82,7 +82,7 @@ size_t trees_right(size_t tree, std::vector<std::vector<size_t>> trees, int row,
 size_t part1()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t visible_trees = 0;
     std::vector<std::vector<size_t>> trees;
@@ -123,7 +123,7 @@ size_t part1()
 size_t part2()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t scenic_tree_score = 0;
     std::vector<std::vector<size_t>> trees;

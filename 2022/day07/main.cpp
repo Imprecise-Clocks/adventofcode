@@ -143,7 +143,7 @@ size_t smallest_folder_above_min(Folder* current, size_t min)
 size_t part1()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t max_size = 100000;
     size_t result = 0;
@@ -176,7 +176,7 @@ size_t part1()
 size_t part2()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t disk_space = 70000000;
     size_t update_size = 30000000;

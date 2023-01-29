@@ -33,7 +33,7 @@ void load_stack(std::vector<std::vector<char>>& stack, std::ifstream& file)
 std::string part1()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     std::string result;
     std::vector<std::vector<char>> stacks;
@@ -66,7 +66,7 @@ std::string part1()
 std::string part2()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     std::string result;
     std::vector<std::vector<char>> stacks;

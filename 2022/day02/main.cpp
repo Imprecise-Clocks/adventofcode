@@ -26,7 +26,7 @@ size_t calculateResult(RPS player1, RPS player2)
 int part1()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t score = 0;
 
@@ -44,7 +44,7 @@ int part1()
 int part2()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t score = 0;
 

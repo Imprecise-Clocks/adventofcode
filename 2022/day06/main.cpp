@@ -6,7 +6,7 @@
 size_t part1()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t result = 4;
 
@@ -26,7 +26,7 @@ size_t part1()
 size_t part2()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer;
     size_t result = 14;
 

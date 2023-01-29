@@ -118,7 +118,7 @@ size_t Monkey::monkey_id = 0;
 size_t part1()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer; 
     size_t rounds = 20;
     std::vector<std::string> information;
@@ -159,7 +159,7 @@ size_t part1()
 size_t part2()
 {
     std::ifstream file;
-    file.open("input1.txt");
+    file.open("input.txt");
     std::string buffer; 
     const size_t rounds = 10000;
     std::vector<std::string> information;
