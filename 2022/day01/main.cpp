@@ -52,7 +52,7 @@ int part2()
     return snacks.at(0) + snacks.at(1) + snacks.at(2);
 }
 
-int main(int argc, char** argv) 
+int main() 
 {
     std::cout << "The answer to part 1: " << part1() << std::endl;
     std::cout << "The answer to part 2: " << part2() << std::endl;

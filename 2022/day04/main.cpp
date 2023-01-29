@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "../utils/util.h"
+#include "util.h"
 
 bool is_full_sub_section(int startid1, int endid1, int startid2, int endid2)
 {

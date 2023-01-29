@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "../utils/util.h"
+#include "util.h"
 
 class Point
 {

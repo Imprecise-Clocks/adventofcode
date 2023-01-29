@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "../utils/util.h"
+#include "util.h"
 
 #define NOOP_CYCLES 1
 #define ADDX_CYCLES 2

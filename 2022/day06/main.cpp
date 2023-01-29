@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "../utils/util.h"
+#include "util.h"
 
 size_t part1()
 {
