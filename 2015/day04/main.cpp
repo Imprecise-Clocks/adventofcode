@@ -9,7 +9,7 @@ int part1()
     file.open("input.txt");
     std::string buffer;
     size_t seed = 0;
-    std::string hash = "aaaabbbbccccddddeeeeffff00001111";
+    std::string hash = "aabbccddeeff00112233445566778899";
     const size_t N_ZEROS = 5;
 
     std::getline(file, buffer);
@@ -25,7 +25,7 @@ int part2()
     file.open("input.txt");
     std::string buffer;
     size_t seed = 0;
-    std::string hash = "aaaabbbbccccddddeeeeffff00001111";
+    std::string hash = "aabbccddeeff00112233445566778899";
     const size_t N_ZEROS = 6;
 
     std::getline(file, buffer);
