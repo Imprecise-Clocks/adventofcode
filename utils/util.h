@@ -5,6 +5,10 @@
 
 namespace util
 {
+    /*
+    Splits a string by a delimiter and fill an output vector with the string tokens.
+    Delimiter elements are not included.
+    */
     void tokenize(std::string const &str, const char delim, std::vector<std::string> &out);
 
     /* 
@@ -12,5 +16,10 @@ namespace util
     * Returns true if all characters in string occur only once.
     */
     bool is_unique(const std::string& string);
+
+    /* 
+    * This function checks if all values within this string are occuring only once.
+    * Returns true if all characters in string occur only once.
+    */
     bool is_unique_ascii(const char* string, const size_t n);
 }
