@@ -7,10 +7,10 @@ int part1()
     std::ifstream file;
     file.open("input.txt");
     std::string buffer;
-    int floor = 0;
-
     std::getline(file, buffer);
     file.close();
+    
+    int floor = 0;
 
     for(char direction : buffer) {
         if(direction == '(') ++floor;
@@ -24,10 +24,10 @@ int part2()
     std::ifstream file;
     file.open("input.txt");
     std::string buffer;
-    int floor = 0;
-
     std::getline(file, buffer);
     file.close();
+
+    int floor = 0;
     
     for(size_t i = 0; i < buffer.size(); ++i) {
         if(buffer.at(i) == '(') ++floor;
