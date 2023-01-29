@@ -7,31 +7,23 @@
 #define LEFT '<'
 #define RIGHT '>'
 
-#define GRID_SIZE 1000
+#define GRID_SIZE 143 // This is the smallest grid size possible for the provided input
 
 void update_grid(std::array<std::array<bool, GRID_SIZE>, GRID_SIZE>& grid, char direction, int& x, int& y) {
     if(direction == UP) {
-        ++y;
-        if(y == GRID_SIZE) y = 0;
-
+        if(++y == GRID_SIZE) y = 0;
         grid.at(y).at(x) = true;
     }
     if(direction == DOWN) {
-        --y;
-        if(y < 0) y = GRID_SIZE - 1;
-
+        if(--y < 0) y = GRID_SIZE - 1;
         grid.at(y).at(x) = true;
     }
     if(direction == LEFT) {
-        ++x;
-        if(x == GRID_SIZE) x = 0;
-
+        if(++x == GRID_SIZE) x = 0;
         grid.at(y).at(x) = true;
     }
     if(direction == RIGHT) {
-        --x;
-        if(x < 0) x = GRID_SIZE - 1;
-
+        if(--x < 0) x = GRID_SIZE - 1;
         grid.at(y).at(x) = true;
     }
     return;
