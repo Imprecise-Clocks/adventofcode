@@ -2,8 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-
-#include "util.h"
+#include "../../utils/util.h"
 
 class Point
 {
