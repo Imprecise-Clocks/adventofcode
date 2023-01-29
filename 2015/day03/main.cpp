@@ -7,7 +7,7 @@
 #define LEFT '<'
 #define RIGHT '>'
 
-#define GRID_SIZE 2100
+#define GRID_SIZE 1000
 
 void update_grid(std::array<std::array<bool, GRID_SIZE>, GRID_SIZE>& grid, char direction, int& x, int& y) {
     if(direction == UP) {
