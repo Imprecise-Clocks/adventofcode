@@ -35,14 +35,15 @@ int part1()
     std::ifstream file;
     file.open("input.txt");
     std::string buffer;
+    std::getline(file, buffer);
+    file.close();
+    
     size_t visited_houses = 0;
-
     std::array<std::array<bool, GRID_SIZE>, GRID_SIZE> grid = {0};
     int current_x = 0;
     int current_y = 0;
     grid.at(current_y).at(current_x) = true;
-    
-    std::getline(file, buffer);
+
     for(char direction : buffer) {
         update_grid(grid, direction, current_x, current_y);
     }
@@ -61,16 +62,17 @@ int part2()
     std::ifstream file;
     file.open("input.txt");
     std::string buffer;
+    std::getline(file, buffer);
+    file.close();
+    
     size_t visited_houses = 0;
-
     std::array<std::array<bool, GRID_SIZE>, GRID_SIZE> grid = {0};
     int current_x = 0;
     int current_y = 0;
     int robo_x = 0;
     int robo_y = 0;
     grid.at(current_y).at(current_x) = true;
-    
-    std::getline(file, buffer);
+
     for(size_t i = 0; i < buffer.size(); ++i) {
         if(i % 2 == 0) {
             update_grid(grid, buffer.at(i), current_x, current_y);

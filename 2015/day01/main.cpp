@@ -10,6 +10,8 @@ int part1()
     int floor = 0;
 
     std::getline(file, buffer);
+    file.close();
+
     for(char direction : buffer) {
         if(direction == '(') ++floor;
         else --floor;
@@ -25,6 +27,8 @@ int part2()
     int floor = 0;
 
     std::getline(file, buffer);
+    file.close();
+    
     for(size_t i = 0; i < buffer.size(); ++i) {
         if(buffer.at(i) == '(') ++floor;
         else --floor;

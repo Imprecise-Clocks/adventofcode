@@ -21,6 +21,7 @@ int part1()
         area += 2 * (length*width + width*height + height*length);
         area += std::min(length*width, std::min(width*height, height*length));
     }
+    file.close();
     return area;
 }
 
@@ -46,6 +47,7 @@ int part2()
         ribbon_length += 2 * (smallest + second_smallest);
         ribbon_length += length * width * height;
     }
+    file.close();
     return ribbon_length;
 }
 

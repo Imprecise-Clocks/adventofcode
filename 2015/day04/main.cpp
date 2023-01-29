@@ -8,11 +8,13 @@ int part1()
     std::ifstream file;
     file.open("input.txt");
     std::string buffer;
+    std::getline(file, buffer);
+    file.close();
+
     size_t seed = 0;
     std::string hash = "aabbccddeeff00112233445566778899";
     const size_t N_ZEROS = 5;
 
-    std::getline(file, buffer);
     while(hash.substr(0, N_ZEROS) != std::string(N_ZEROS, '0')) {
         hash = md5(buffer + std::to_string(++seed));
     }
@@ -24,11 +26,13 @@ int part2()
     std::ifstream file;
     file.open("input.txt");
     std::string buffer;
+    std::getline(file, buffer);
+    file.close();
+    
     size_t seed = 0;
     std::string hash = "aabbccddeeff00112233445566778899";
     const size_t N_ZEROS = 6;
 
-    std::getline(file, buffer);
     while(hash.substr(0, N_ZEROS) != std::string(N_ZEROS, '0')) {
         hash = md5(buffer + std::to_string(++seed));
     }
