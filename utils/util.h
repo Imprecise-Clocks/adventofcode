@@ -22,4 +22,16 @@ namespace util
     * Returns true if all characters in string occur only once.
     */
     bool is_unique_ascii(const char* string, const size_t n);
+
+    /*
+    *This function swaps the values in the provided variables
+    */
+    template<typename T>
+    void swap(T* a, T* b)
+    {
+        *a ^= *b;
+        *b ^= *a;
+        *a ^= *b;
+        return;
+    }
 }
