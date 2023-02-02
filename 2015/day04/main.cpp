@@ -3,7 +3,7 @@
 #include <string>
 #include "../../utils/md5.h"
 
-int part1()
+size_t part1()
 {
     std::ifstream file;
     file.open("input.txt");
@@ -21,7 +21,7 @@ int part1()
     return seed;
 }
 
-int part2()
+size_t part2()
 {    
     std::ifstream file;
     file.open("input.txt");
