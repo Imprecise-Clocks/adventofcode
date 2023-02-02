@@ -81,9 +81,9 @@ size_t part1()
         char delimiter = ' ';
         std::vector<std::string> instructions;
         util::tokenize(buffer, delimiter, instructions);
+        std::vector<std::string> coordinates;
+        delimiter = ',';
         if(instructions.at(0) == "toggle") {
-            std::vector<std::string> coordinates;
-            delimiter = ',';
             util::tokenize(instructions.at(1), delimiter, coordinates);
             size_t from_x = std::stoi(coordinates.at(0));
             size_t from_y = std::stoi(coordinates.at(1));
@@ -96,8 +96,6 @@ size_t part1()
             toggle(grid, from_x, from_y, to_x, to_y);
         }
         else {
-            std::vector<std::string> coordinates;
-            delimiter = ',';
             util::tokenize(instructions.at(2), delimiter, coordinates);
             size_t from_x = std::stoi(coordinates.at(0));
             size_t from_y = std::stoi(coordinates.at(1));
@@ -136,10 +134,10 @@ size_t part2()
     while(std::getline(file, buffer)) {
         char delimiter = ' ';
         std::vector<std::string> instructions;
+        std::vector<std::string> coordinates;
         util::tokenize(buffer, delimiter, instructions);
+        delimiter = ',';
         if(instructions.at(0) == "toggle") {
-            std::vector<std::string> coordinates;
-            delimiter = ',';
             util::tokenize(instructions.at(1), delimiter, coordinates);
             size_t from_x = std::stoi(coordinates.at(0));
             size_t from_y = std::stoi(coordinates.at(1));
@@ -152,8 +150,6 @@ size_t part2()
             change(grid, from_x, from_y, to_x, to_y, 2);
         }
         else {
-            std::vector<std::string> coordinates;
-            delimiter = ',';
             util::tokenize(instructions.at(2), delimiter, coordinates);
             size_t from_x = std::stoi(coordinates.at(0));
             size_t from_y = std::stoi(coordinates.at(1));
