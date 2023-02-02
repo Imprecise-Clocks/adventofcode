@@ -24,7 +24,7 @@ namespace util
     bool is_unique_ascii(const char* string, const size_t n);
 
     /*
-    *This function swaps the values in the provided variables
+    *This function swaps the values in the provided pointers
     */
     template<typename T>
     void swap(T* a, T* b)
