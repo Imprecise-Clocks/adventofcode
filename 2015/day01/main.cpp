@@ -1,8 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdint.h>
 
-int part1()
+int32_t part1()
 {
     std::ifstream file;
     file.open("input.txt");
@@ -10,7 +11,7 @@ int part1()
     std::getline(file, buffer);
     file.close();
     
-    int floor = 0;
+    int32_t floor = 0;
 
     for(char direction : buffer) {
         if(direction == '(') ++floor;
@@ -19,7 +20,7 @@ int part1()
     return floor;
 }
 
-int part2()
+int32_t part2()
 {    
     std::ifstream file;
     file.open("input.txt");
@@ -27,7 +28,7 @@ int part2()
     std::getline(file, buffer);
     file.close();
 
-    int floor = 0;
+    int32_t floor = 0;
     
     for(size_t i = 0; i < buffer.size(); ++i) {
         if(buffer.at(i) == '(') ++floor;
