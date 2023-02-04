@@ -42,7 +42,8 @@ size_t part1()
         }
         last_depth = current_depth;
     }
-
+    file.close();
+    
     return count;
 }
 
