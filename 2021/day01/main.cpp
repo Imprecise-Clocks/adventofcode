@@ -50,11 +50,11 @@ size_t part2()
 {
     std::ifstream file;
     file.open("input.txt");
-    size_t count = 0;
 
     std::vector<size_t> depths = create_moving_sum(get_depths(file), 3);
     file.close();
 
+    size_t count = 0;
     size_t current_depth = depths.at(0);
     for (const auto depth : depths) {
         if(depth > current_depth) {
