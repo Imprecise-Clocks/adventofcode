@@ -3,7 +3,28 @@
 #include <stdint.h>
 #include "../../utils/util.h"
 
-struct register {
+class Register {
+public:
+    Register(const std::string& name, uint16_t value) : name(name), value(value) {}
+
+    Register& operator =(const Register& other)
+    {
+        this->value = other.value;
+        return this;
+    }
+
+    Register& operator =(const uint16_t value)
+    {
+        this->value = value;
+        return this;
+    }
+
+    Register operator &(const Register& other) const
+    {
+
+    }
+
+private:
     std::string name;
     uint16_t value;
 };
