@@ -7,7 +7,6 @@
 
 class Register {
 public:
-
     Register() {}
 
     Register(const uint16_t value) {
