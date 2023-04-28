@@ -225,9 +225,8 @@ size_t part1()
     return a.value;
 }
 
-size_t part2()
+size_t part2(uint16_t previous_result)
 {        
-    uint16_t previous_result = part1();
     std::ifstream file;
     file.open("input.txt");
     std::string buffer;
@@ -250,7 +249,8 @@ size_t part2()
 
 int main() 
 {
-    std::cout << "The answer to part 1: " << part1() << std::endl;
-    std::cout << "The answer to part 2: " << part2() << std::endl;
+    uint16_t result_part1 = part1();
+    std::cout << "The answer to part 1: " << result_part1 << std::endl;
+    std::cout << "The answer to part 2: " << part2(result_part1) << std::endl;
     return 0;
 }
