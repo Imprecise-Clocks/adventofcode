@@ -5,9 +5,9 @@
 #include "../../utils/util.h"
 
 
-size_t strSize(const std::string& str) {
+size_t string_content_size(const std::string& str) {
     std::string temp = str.substr(1, str.length() - 2);
-    std::regex double_back("\\\\\\\\(?!(x[0-9|a-f][0-9|a-f]))");
+    std::regex double_back("\\\\\\\\"); // add on: (?!(x[0-9|a-f][0-9|a-f]))
     std::regex single_quote("\\\"");
     std::regex hex_special("\\\\[x][0-9|a-f][0-9|a-f]");
 
@@ -35,7 +35,7 @@ size_t part1()
 
     while(std::getline(file, buffer)) {
         memory_size = buffer.size();
-        string_size = strSize(buffer);
+        string_size = string_content_size(buffer);
         sum += memory_size - string_size;
     }
     file.close();
