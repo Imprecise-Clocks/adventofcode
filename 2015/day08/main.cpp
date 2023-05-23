@@ -4,17 +4,6 @@
 #include <regex>
 #include "../../utils/util.h"
 
-size_t part2()
-{  
-    std::ifstream file;
-    file.open("input.txt");
-    std::string buffer;
-    while(std::getline(file, buffer)) {
-    }
-    file.close();
-    
-    return 0;
-}
 
 size_t strSize(std::string& str) {
     str = str.substr(1, str.length() - 2);
@@ -52,6 +41,18 @@ size_t part1()
     file.close();
     
     return sum;
+}
+
+size_t part2()
+{  
+    std::ifstream file;
+    file.open("input.txt");
+    std::string buffer;
+    while(std::getline(file, buffer)) {
+    }
+    file.close();
+    
+    return 0;
 }
 
 int main() 
