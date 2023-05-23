@@ -5,20 +5,20 @@
 #include "../../utils/util.h"
 
 
-size_t strSize(std::string& str) {
-    str = str.substr(1, str.length() - 2);
-    std::regex double_back("\\\\(?!(x[0-9|a-f][0-9|a-f])).");
-    std::regex single_quote("\\\".");
-    std::regex hex_special(".\\\\[x][0-9|a-f][0-9|a-f]");
+size_t strSize(const std::string& str) {
+    std::string temp = str.substr(1, str.length() - 2);
+    std::regex double_back("\\\\\\\\(?!(x[0-9|a-f][0-9|a-f]))");
+    std::regex single_quote("\\\"");
+    std::regex hex_special("\\\\[x][0-9|a-f][0-9|a-f]");
 
     auto single_quote_count(std::distance(
-        std::sregex_iterator(str.begin(), str.end(), single_quote),
+        std::sregex_iterator(temp.begin(), temp.end(), single_quote),
         std::sregex_iterator()));
     auto double_back_count(std::distance(
-        std::sregex_iterator(str.begin(), str.end(), double_back),
+        std::sregex_iterator(temp.begin(), temp.end(), double_back),
         std::sregex_iterator()));
     auto hex_count(std::distance(
-        std::sregex_iterator(str.begin(), str.end(), hex_special),
+        std::sregex_iterator(temp.begin(), temp.end(), hex_special),
         std::sregex_iterator()));
 
     return str.length() - single_quote_count - double_back_count - hex_count * 3 - 2;
