@@ -21,7 +21,7 @@ size_t string_content_size(const std::string& str) {
         std::sregex_iterator(temp.begin(), temp.end(), hex_special),
         std::sregex_iterator()));
 
-    return str.length() - single_quote_count - double_back_count - hex_count * 3 - 2;
+    return temp.length() - single_quote_count - double_back_count - hex_count * 3;
 }
 
 size_t part1()
