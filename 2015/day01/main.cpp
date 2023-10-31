@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <stdint.h>
+#include <vector>
 
 int32_t part1()
 {
@@ -10,7 +11,7 @@ int32_t part1()
     std::string buffer;
     std::getline(file, buffer);
     file.close();
-    
+
     int32_t floor = 0;
 
     for(char direction : buffer) {

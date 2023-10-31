@@ -5,23 +5,23 @@
 #include "../../utils/util.h"
 
 
-size_t string_content_size(const std::string& str) {
-    std::string temp = str.substr(1, str.length() - 2);
-    std::regex double_back("\\\\\\\\"); // add on: (?!(x[0-9|a-f][0-9|a-f]))
+size_t string_size_regex(const std::string& str) {
+    // std::string temp = str.substr(1, str.length() - 2);
+    std::regex double_back("\\\\\\\\"); // (?!(x[0-9a-f]{2}))
     std::regex single_quote("\\\"");
-    std::regex hex_special("\\\\[x][0-9|a-f][0-9|a-f]");
+    std::regex hex_special("\\\\x[0-9a-f]{2}");
 
     auto single_quote_count(std::distance(
-        std::sregex_iterator(temp.begin(), temp.end(), single_quote),
+        std::sregex_iterator(str.begin(), str.end(), single_quote),
         std::sregex_iterator()));
     auto double_back_count(std::distance(
-        std::sregex_iterator(temp.begin(), temp.end(), double_back),
+        std::sregex_iterator(str.begin(), str.end(), double_back),
         std::sregex_iterator()));
     auto hex_count(std::distance(
-        std::sregex_iterator(temp.begin(), temp.end(), hex_special),
+        std::sregex_iterator(str.begin(), str.end(), hex_special),
         std::sregex_iterator()));
 
-    return temp.length() - single_quote_count - double_back_count - hex_count * 3;
+    return str.size() - (single_quote_count + double_back_count + hex_count * 3 + 2);
 }
 
 size_t part1()
@@ -30,16 +30,16 @@ size_t part1()
     file.open("input.txt");
     std::string buffer;
     size_t sum = 0;
-    size_t memory_size; 
-    size_t string_size; 
+    size_t memory_size;
+    size_t string_size;
 
     while(std::getline(file, buffer)) {
         memory_size = buffer.size();
-        string_size = string_content_size(buffer);
+        string_size = string_size_regex(buffer);
         sum += memory_size - string_size;
     }
     file.close();
-    
+
     return sum;
 }
 

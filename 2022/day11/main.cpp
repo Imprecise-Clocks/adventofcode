@@ -162,7 +162,7 @@ int64_t part2()
     std::ifstream file;
     file.open("input.txt");
     std::string buffer; 
-    const int64_t rounds = 10000;
+    const int rounds = 10000;
     std::vector<std::string> information;
     std::vector<Monkey> monkey_list;
 
@@ -181,7 +181,7 @@ int64_t part2()
     monkey_list.push_back(Monkey::create(information));
     monkey_list.at(monkey_list.size() - 1).stressed = true;
     
-    int64_t round = 0;
+    int round = 0;
     while(rounds - round) {
         if(round == 20) {
             for(auto& monkey : monkey_list) {
