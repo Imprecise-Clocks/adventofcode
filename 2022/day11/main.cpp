@@ -3,12 +3,13 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <cstdint>
 #include "../../utils/util.h"
 
 class Monkey
 {
 public:
-    Monkey(const std::vector<size_t>& items, int multiply, int add, int devisible, std::size_t passed, std::size_t failed) {
+    Monkey(const std::vector<int64_t>& items, int multiply, int add, int devisible, int passed, int failed) {
         this->items = items;
         this->multiply = multiply;
         this->add = add;
@@ -18,22 +19,22 @@ public:
         this->id = monkey_id++;
     };
 
-    static size_t monkey_id;
+    static int monkey_id;
 
-    std::vector<size_t> items;
-    size_t id;
-    size_t inspections = 0;
+    std::vector<int64_t> items;
+    int id;
+    int inspections = 0;
     bool stressed = false;
 
 private:
     int multiply;
     int add;
     int devisible;
-    std::size_t passed_idx;
-    std::size_t failed_idx;
+    int passed_idx;
+    int failed_idx;
 
 public:
-    void inspect(size_t& item, size_t& idx) {
+    void inspect(int64_t& item, int& idx) {
         item = this->items.back();
         this->items.pop_back();
         int multiplication = this->multiply == 0 ? item : this->multiply; 
@@ -52,9 +53,9 @@ public:
     }
 
     static Monkey create(std::vector<std::string>& information) {
-        std::vector<size_t> list = std::vector<size_t>();
+        std::vector<int64_t> list = std::vector<int64_t>();
         int addition = 0, multiplication = 1, devisible = 1;
-        size_t passed = 0, failed = 0;
+        int passed = 0, failed = 0;
 
         std::vector<std::string> tokens;
         char delim = ':';
@@ -113,14 +114,14 @@ public:
     } 
 };
 
-size_t Monkey::monkey_id = 0;
+int Monkey::monkey_id = 0;
 
-size_t part1()
+int64_t part1()
 {
     std::ifstream file;
     file.open("input.txt");
     std::string buffer; 
-    size_t rounds = 20;
+    int rounds = 20;
     std::vector<std::string> information;
     std::vector<Monkey> monkey_list;
 
@@ -139,10 +140,10 @@ size_t part1()
     Monkey::monkey_id = 0;
     
     while(rounds--) {
-        for(size_t i = 0; i < monkey_list.size(); ++i) {
-            size_t runs = monkey_list.at(i).items.size();
-            size_t item;
-            size_t idx;
+        for(std::size_t i = 0; i < monkey_list.size(); ++i) {
+            int runs = monkey_list.at(i).items.size();
+            int64_t item;
+            int idx;
             while(runs--) {
                 monkey_list.at(i).inspect(item, idx);
                 monkey_list.at(idx).items.push_back(item);
@@ -156,12 +157,12 @@ size_t part1()
     return monkey_list.at(0).inspections * monkey_list.at(1).inspections;
 }
 
-size_t part2()
+int64_t part2()
 {
     std::ifstream file;
     file.open("input.txt");
     std::string buffer; 
-    const size_t rounds = 10000;
+    const int64_t rounds = 10000;
     std::vector<std::string> information;
     std::vector<Monkey> monkey_list;
 
@@ -180,17 +181,17 @@ size_t part2()
     monkey_list.push_back(Monkey::create(information));
     monkey_list.at(monkey_list.size() - 1).stressed = true;
     
-    size_t round = 0;
+    int64_t round = 0;
     while(rounds - round) {
         if(round == 20) {
             for(auto& monkey : monkey_list) {
                 monkey.stressed = true;
             }
         }
-        for(size_t i = 0; i < monkey_list.size(); ++i) {
-            size_t runs = monkey_list.at(i).items.size();
-            size_t item;
-            size_t idx;
+        for(std::size_t i = 0; i < monkey_list.size(); ++i) {
+            int runs = monkey_list.at(i).items.size();
+            int64_t item;
+            int idx;
             while(runs--) {
                 monkey_list.at(i).inspect(item, idx);
                 monkey_list.at(idx).items.push_back(item);
