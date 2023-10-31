@@ -22,7 +22,7 @@ int main(void) {
 
     int score = 0;
 
-    std::ifstream infile("bench.txt");
+    std::ifstream infile("input.txt");
     char a, b;
     while (infile >> a >> b)
     {   

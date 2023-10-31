@@ -7,7 +7,7 @@ int main(void) {
     size_t lookup[3] = {1, 2, 3};
     int score = 0;
 
-    std::ifstream infile("bench.txt");
+    std::ifstream infile("input.txt");
     char a, b;
     while (infile >> a >> b)
     {   

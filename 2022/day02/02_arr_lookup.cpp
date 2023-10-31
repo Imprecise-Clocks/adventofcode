@@ -8,7 +8,7 @@ int main(void) {
     size_t values[18] = {0, 3, 6, 0, 0, 0, 0, 3, 0, 6, 0, 6, 0, 0, 0, 0, 0, 3};
     int score = 0;
 
-    std::ifstream infile("bench.txt");
+    std::ifstream infile("input.txt");
     char a, b;
     while (infile >> a >> b)
     {   
