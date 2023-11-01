@@ -37,3 +37,6 @@
 
 # Olli's code
 *.js
+
+# benchmarking input files
+bench*
