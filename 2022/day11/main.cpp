@@ -9,7 +9,7 @@
 class Monkey
 {
 public:
-    Monkey(const std::vector<int64_t>& items, int multiply, int add, int devisible, int passed, int failed) {
+    Monkey(const std::vector<uint64_t>& items, int multiply, int add, int devisible, int passed, int failed) {
         this->items = items;
         this->multiply = multiply;
         this->add = add;
@@ -21,9 +21,9 @@ public:
 
     static int monkey_id;
 
-    std::vector<int64_t> items;
+    std::vector<uint64_t> items;
     int id;
-    int inspections = 0;
+    int64_t inspections = 0;
     bool stressed = false;
 
 private:
@@ -34,15 +34,19 @@ private:
     int failed_idx;
 
 public:
-    void inspect(int64_t& item, int& idx) {
+    void inspect(uint64_t& item, int& idx) {
         item = this->items.back();
         this->items.pop_back();
         int multiplication = this->multiply == 0 ? item : this->multiply; 
-        int reflief_level = stressed ? 1 : 3;
+        int reflief_level = 3;
+        int no_relief = 9699690;
 
         item = item * multiplication + this->add;
-        item /= reflief_level;
-
+        if(this->stressed) {
+            item /= reflief_level;
+        } else {
+            item %= no_relief;
+        }
         if(item % this->devisible == 0) {
             idx = this->passed_idx;
         }
@@ -53,7 +57,7 @@ public:
     }
 
     static Monkey create(std::vector<std::string>& information) {
-        std::vector<int64_t> list = std::vector<int64_t>();
+        std::vector<uint64_t> list = std::vector<uint64_t>();
         int addition = 0, multiplication = 1, devisible = 1;
         int passed = 0, failed = 0;
 
@@ -142,7 +146,7 @@ int64_t part1()
     while(rounds--) {
         for(std::size_t i = 0; i < monkey_list.size(); ++i) {
             int runs = monkey_list.at(i).items.size();
-            int64_t item;
+            uint64_t item;
             int idx;
             while(runs--) {
                 monkey_list.at(i).inspect(item, idx);
@@ -181,16 +185,14 @@ int64_t part2()
     monkey_list.push_back(Monkey::create(information));
     monkey_list.at(monkey_list.size() - 1).stressed = true;
     
+    for(auto& monkey : monkey_list) {
+        monkey.stressed = true;
+    }
     int round = 0;
     while(rounds - round) {
-        if(round == 20) {
-            for(auto& monkey : monkey_list) {
-                monkey.stressed = true;
-            }
-        }
         for(std::size_t i = 0; i < monkey_list.size(); ++i) {
             int runs = monkey_list.at(i).items.size();
-            int64_t item;
+            uint64_t item;
             int idx;
             while(runs--) {
                 monkey_list.at(i).inspect(item, idx);
