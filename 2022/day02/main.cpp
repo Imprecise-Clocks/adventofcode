@@ -16,17 +16,17 @@ enum Result
     Loss = 0
 };
 
-static size_t calculateResult(RPS player1, RPS player2)
+int calculateResult(RPS player1, RPS player2)
 {   
     if(player1 == player2) return Result::Draw;
-    if(((player2 > player1)*((player2 + player1) % 3) + (player1 > player2)*(player1 - player2)) == 1) return Result::Win;
+    if((player2 > player1)*((player2 + player1) % 3) == 1 ^ (player1 > player2)*(player1 - player2) == 1) return Result::Win;
     return Result::Loss;
 }
 
 int part1()
 {
     std::ifstream file;
-    file.open("input.txt");
+    file.open("bench.txt");
     std::string buffer;
     size_t score = 0;
 
@@ -38,13 +38,13 @@ int part1()
     }
     file.close();
 
-   bench    return score;
+   return score;
 }
 
 int part2()
 {
     std::ifstream file;
-    file.open("input.txt");
+    file.open("bench.txt");
     std::string buffer;
     size_t score = 0;
 
@@ -66,6 +66,6 @@ int part2()
 int main() 
 {
     std::cout << "The answer to part 1: " << part1() << std::endl;
-    // std::cout << "The answer to part 2: " << part2() << std::endl;
+    std::cout << "The answer to part 2: " << part2() << std::endl;
     return 0;
 }
