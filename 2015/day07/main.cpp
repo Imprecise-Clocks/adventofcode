@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <regex>
 #include <memory>
+#include <string>
 #include <unordered_map>
 #include "../../utils/util.h"
 
@@ -224,7 +225,7 @@ size_t part2(uint16_t previous_result)
     file.open("input.txt");
     std::string buffer;
     std::unordered_map<std::string, std::shared_ptr<Register>> map;
-
+	
     while(std::getline(file, buffer)) {
         parse(buffer, map);
     }
