@@ -40,3 +40,6 @@
 
 # benchmarking input files
 bench*
+
+# build directories in rust
+target
