@@ -2,3 +2,9 @@
 !*.txt
 !*.cpp
 !*.md
+!.gitignore
+!utils/*.cpp
+!utils/*.h
+!2*/day*/*.cpp
+!2*/day*/*.txt
+!2*/day*/*.md
