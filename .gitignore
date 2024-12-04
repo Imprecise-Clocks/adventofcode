@@ -1,10 +1,19 @@
+# By default do not allow anything
 *
+
+# Allow .txt, .cpp, and .md files
 !*.txt
 !*.cpp
 !*.md
+
+# Allow .gitignore itself
 !.gitignore
+
+# Allow all .cpp and .h files in the utils directory
 !utils/*.cpp
 !utils/*.h
+
+# Allow pattern for 2XXX/dayXX/ directories
 !2*/day*/*.cpp
 !2*/day*/*.txt
 !2*/day*/*.md
