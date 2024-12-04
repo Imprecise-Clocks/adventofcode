@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
-#include <array>
 #include <stdint.h>
 #include <vector>
 #include <map>
