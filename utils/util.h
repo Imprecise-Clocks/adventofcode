@@ -10,6 +10,7 @@ namespace util
     Delimiter elements are not included.
     */
     void tokenize(std::string const &str, const char delim, std::vector<std::string> &out);
+    void tokenize(std::string const &str, const char delim, std::vector<int> &out);
 
     /* 
     * This function checks if all values within this string are occuring only once.
