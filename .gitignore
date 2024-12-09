@@ -11,9 +11,9 @@
 !utils/*.h
 
 # Allow pattern for 2XXX/dayXX/ directories
-!2*/day*/*.cpp
-!2*/day*/*.txt
-!2*/day*/*.md
+!20*/day*/*.cpp
+!20*/day*/*.txt
+!20*/day*/*.md
 
 # By default do not allow anything
 *
