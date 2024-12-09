@@ -11,7 +11,9 @@ namespace util
     */
     void tokenize(std::string const &str, const char delim, std::vector<std::string> &out);
     void tokenize(std::string const &str, const char delim, std::vector<int> &out);
-
+    void tokenize(std::string const &str, const std::string &delim, std::vector<std::string> & out);
+    void tokenize(std::string const &str, const std::string &delim, std::vector<int> & out);
+    
     /* 
     * This function checks if all values within this string are occuring only once.
     * Returns true if all characters in string occur only once.
