@@ -8,13 +8,11 @@
 
 // Hash function for std::array<int, 2>
 struct ArrayHash {
-    std::size_t operator()(const std::array<int, 2>& arr) const {
-        std::size_t seed = 0;
-        for (const auto& elem : arr) {
-            seed ^= std::hash<int>()(elem) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-        }
-        return seed;
-    }
+	size_t operator()(const std::array<int, 2>& arr) const {
+		size_t hash1 = std::hash<int>()(arr[0]);
+		size_t hash2 = std::hash<int>()(arr[1]);
+		return hash1 ^ (hash2 << 1); // Combine the hashes
+	}
 };
 
 int part1()
@@ -65,8 +63,9 @@ int part2()
 	util::tokenize(buffer, ',', instructions);
 	for(std::string& element: instructions) {
 		// remove leading white spaces
-		if (element[0] == ' ')
+		if (element[0] == ' ') {
 			element = element.substr(1, element.size() -1);
+		}
 	}
 	for(std::string& direction : instructions) {
 		if(direction[0] == 'R') {
@@ -85,8 +84,7 @@ int part2()
 			position[current_direction] += gradient;
 			locations[position]++;
 			if(locations[position] == 2) {
-				int distance = std::abs(position[0]) + std::abs(position[1]);
-				return distance;
+				return std::abs(position[0]) + std::abs(position[1]);
 			}
 		}
 	}
