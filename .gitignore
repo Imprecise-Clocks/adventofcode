@@ -4,18 +4,13 @@
 # Allow .gitignore itself
 !.gitignore
 
-# Allow .txt, .cpp, and .md files
-!*.txt
-!*.cpp
-!*.md
-
 # Allow all .cpp and .h files in the utils directory
 !utils/*.cpp
 !utils/*.h
 
-# Allow pattern for 2XXX/dayXX/ directories
-!20*/day*/*.cpp
-!20*/day*/*.txt
-!20*/day*/*.md
+# Allow pattern for 20XX/dayXX/ directories
+!20[1-9][0-9]/day[0-2][0-9]/*.cpp
+!20[1-9][0-9]/day[0-2][0-9]/*.txt
+!20[1-9][0-9]/day[0-2][0-9]/*.md
 
 
