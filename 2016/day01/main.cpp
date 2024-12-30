@@ -78,11 +78,9 @@ int part2()
 			current_direction = (current_direction + 3) % 4;
 		}
 		int gradient = 1;
-		bool negative_gradient = false;
 		if(current_direction > 1) {
 			current_direction -= 2;
 			gradient = -1;
-			negative_gradient = true;
 		}
 		int walk = std::stoi(direction.substr(1, direction.size() - 1));
 		while(walk--) {
@@ -92,7 +90,7 @@ int part2()
 				return std::abs(position[0]) + std::abs(position[1]);
 			}
 		}
-		if(negative_gradient) {
+		if(gradient == -1) {
 			current_direction += 2;
 		}
 	}
