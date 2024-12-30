@@ -60,6 +60,8 @@ int part2()
 	std::unordered_map<std::array<int, 2>, int, ArrayHash> locations;
 	int current_direction = 0;
 
+	locations[position] = 1; // Add starting position to visited locations
+
 	util::tokenize(buffer, ',', instructions);
 	for(std::string& element: instructions) {
 		// remove leading white spaces
