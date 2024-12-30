@@ -44,6 +44,7 @@ int part1()
 	}
 	int distance = (int) std::max(position.at(0), position.at(2)) - (int) std::min(position.at(0), position.at(2));
 	distance += (int) std::max(position.at(1), position.at(3)) - (int) std::min(position.at(1), position.at(3));
+
 	return distance;
 }
 
@@ -77,9 +78,11 @@ int part2()
 			current_direction = (current_direction + 3) % 4;
 		}
 		int gradient = 1;
+		bool negative_gradient = false;
 		if(current_direction > 1) {
 			current_direction -= 2;
 			gradient = -1;
+			negative_gradient = true;
 		}
 		int walk = std::stoi(direction.substr(1, direction.size() - 1));
 		while(walk--) {
@@ -88,6 +91,9 @@ int part2()
 			if(locations[position] == 2) {
 				return std::abs(position[0]) + std::abs(position[1]);
 			}
+		}
+		if(negative_gradient) {
+			current_direction += 2;
 		}
 	}
 	return -1;
