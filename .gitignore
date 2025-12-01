@@ -1,16 +1,15 @@
-# By default do not allow anything
-*
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
 
-# Allow .gitignore itself
-!.gitignore
+target/
+*/target/
 
-# Allow all .cpp and .h files in the utils directory
-!utils/*.cpp
-!utils/*.h
-
-# Allow pattern for 20XX/dayXX/ directories
-!20[1-9][0-9]/day[0-2][0-9]/*.cpp
-!20[1-9][0-9]/day[0-2][0-9]/*.txt
-!20[1-9][0-9]/day[0-2][0-9]/*.md
-
-
+*.swp
+*.swo
+*~
+*.tmp
