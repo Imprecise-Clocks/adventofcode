@@ -3,24 +3,24 @@ use std::io::{self, prelude::*};
 use std::path::Path;
 
 /// Funtion to move the dial according to the instruction and wraps at 99
-/// The instruction is a string that consits of a leading char that determines the direction 
+/// The instruction is a string that consits of a leading char that determines the direction
 /// L for left or subtraction
 /// R for righ or adding
 /// the subsequent letters are the number of steps
-/// 
+///
 /// The dial is wrapped to not overflow 99 or underflow 0, it implements a circular behaviour such that 99 + 1 = 0 and 0 - 1 = 99
 fn move_dial(dial: &mut i32, instruction: &str) -> u32 {
     if instruction.len() < 2 {
         eprintln!("step instruction is invalid: {}", instruction);
         return 0;
     }
-    
+
     let first = instruction.chars().next().unwrap();
 
     let dir: i32 = match first {
         'L' => -1,
-        'R' =>  1,
-        _   => {
+        'R' => 1,
+        _ => {
             eprintln!("invalid direction: {}", first);
             return 0;
         }
@@ -42,29 +42,25 @@ fn move_dial(dial: &mut i32, instruction: &str) -> u32 {
             zero_counter += 1;
         }
         *dial += dir * steps + 100;
-    }
-    else if *dial + dir * steps > 99 {
+    } else if *dial + dir * steps > 99 {
         if *dial != 0 {
             zero_counter += 1;
         }
         *dial += dir * steps - 100;
-    }
-    else {
+    } else {
         *dial += dir * steps;
-        
+
         if *dial == 0 {
             zero_counter += 1;
         }
     }
 
-
     return zero_counter;
-
 }
 
 /// Advent of code day one
 fn one() -> u32 {
-    let mut dial: i32  = 50;
+    let mut dial: i32 = 50;
     let mut zero_coutner: u32 = 0;
 
     if let Ok(lines) = read_lines("data/1.txt") {
@@ -76,7 +72,6 @@ fn one() -> u32 {
         }
     }
 
-    
     // alternative with match statement
     /* match read_lines("../data/1.txt") {
         Ok(lines) => {
@@ -87,12 +82,11 @@ fn one() -> u32 {
         Err(_) => {}
     } */
 
-
     zero_coutner
 }
 
 /// Advent of code day two
-fn two()-> u32 {
+fn two() -> u32 {
     let mut dial: i32 = 50;
     let mut zero_counter: u32 = 0;
 
@@ -101,7 +95,7 @@ fn two()-> u32 {
             zero_counter += move_dial(&mut dial, &line) as u32;
         }
     }
-    
+
     zero_counter
 }
 
@@ -113,9 +107,10 @@ fn main() {
     println!("{}", result_two);
 }
 
-
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where P: AsRef<Path>, {
+where
+    P: AsRef<Path>,
+{
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
 }
@@ -198,10 +193,9 @@ mod tests {
     fn test_aoc_test() {
         let mut dial: i32 = 50;
         let instructions = vec![
-            "L68", "L30", "R48", "L5", "R60",
-            "L55", "L1", "L99", "R14", "L82",
+            "L68", "L30", "R48", "L5", "R60", "L55", "L1", "L99", "R14", "L82",
         ];
-        
+
         let mut zero_count_one: u32 = 0;
         let mut zero_count_two: u32 = 0;
         for instruction in instructions {
@@ -214,5 +208,5 @@ mod tests {
         assert_eq!(zero_count_one, 3);
         assert_eq!(zero_count_two, 6);
     }
-
 }
+
