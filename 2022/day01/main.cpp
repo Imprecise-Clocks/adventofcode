@@ -16,7 +16,7 @@ int part1()
         if(buffer.size() == 0) {
             if(max < sum) {
                 max = sum;
-            }        
+            }
             sum = 0;
             continue;
         }
