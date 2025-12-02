@@ -85,9 +85,10 @@ fn check_id_range_validity_multiple(lower_bound: u64, upper_bound: u64) -> u64 {
             let id_split = id_string.split_at(split_pos);
             
             // if the rest of the number is not divisable by the pattern lenght as whole number, then the check can be skipped
-            if id_split.1.len() % id_split.0.len() != 0 {
+            // commented out because execution time is incresased by 40ms, therefore not worth it. But I like the idea
+            /* if id_split.1.len() % id_split.0.len() != 0 {
                 continue;
-            }
+            } */
             let found_reps: Vec<(usize, &str)> = id_split.1.match_indices(id_split.0).collect();
             if found_reps.len() * id_split.0.len() == id_split.1.len() {
                 similarity_counter += i;
