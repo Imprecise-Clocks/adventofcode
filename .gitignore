@@ -1,6 +1,7 @@
 *.o
 *.obj
 *.exe
+*.elf
 *.dll
 *.so
 *.a
@@ -8,8 +9,11 @@
 
 target/
 */target/
+build/
 
 *.swp
 *.swo
 *~
 *.tmp
+
+.vscode
