@@ -63,7 +63,7 @@ fn one() -> u32 {
     let mut dial: i32 = 50;
     let mut zero_coutner: u32 = 0;
 
-    if let Ok(lines) = read_lines("data/1.txt") {
+    if let Ok(lines) = read_lines("data/input.txt") {
         for line in lines.map_while(Result::ok) {
             move_dial(&mut dial, &line);
             if dial == 0 {
@@ -90,7 +90,7 @@ fn two() -> u32 {
     let mut dial: i32 = 50;
     let mut zero_counter: u32 = 0;
 
-    if let Ok(lines) = read_lines("data/1.txt") {
+    if let Ok(lines) = read_lines("data/input.txt") {
         for line in lines.map_while(Result::ok) {
             zero_counter += move_dial(&mut dial, &line) as u32;
         }
@@ -112,7 +112,7 @@ where
     P: AsRef<Path>,
 {
     let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
+    return Ok(io::BufReader::new(file).lines());
 }
 
 #[cfg(test)]
@@ -209,4 +209,3 @@ mod tests {
         assert_eq!(zero_count_two, 6);
     }
 }
-

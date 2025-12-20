@@ -1,34 +1,48 @@
-use std::path::Path;
-use std::io;
 use std::fs;
-
+use std::io;
+use std::path::Path;
 
 fn extract_bounds(bounds: &str) -> io::Result<(u64, u64)> {
     let (lower_str, upper_str) = match bounds.split_once('-') {
         Some(parts) => parts,
-        None => return Err(io::Error::new(io::ErrorKind::InvalidInput, "Invalid range format")),
+        None => {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "Invalid range format",
+            ));
+        }
     };
 
-    
     let lower_bound: u64 = match lower_str.trim().parse::<u64>() {
         Ok(val) => val,
-        Err(_) => return Err(io::Error::new(io::ErrorKind::InvalidInput, "Invalid lower bound format")),
+        Err(_) => {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "Invalid lower bound format",
+            ));
+        }
     };
 
     let upper_bound: u64 = match upper_str.trim().parse::<u64>() {
         Ok(val) => val,
-        Err(_) => return Err(io::Error::new(io::ErrorKind::InvalidInput, "Invalid upper bound format"))
+        Err(_) => {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "Invalid upper bound format",
+            ));
+        }
     };
 
     return Ok((lower_bound, upper_bound));
 }
 
 /// Function takes the challange input location as paht and returns an array consisting of tuples with two integer values
-fn parse_id_bounds(input: &str) -> Vec<(u64, u64)> { // we have a vector of tuples with two u64 values, the vector
+fn parse_id_bounds(input: &str) -> Vec<(u64, u64)> {
+    // we have a vector of tuples with two u64 values, the vector
     let mut id_ranges: Vec<(u64, u64)> = Vec::new();
 
     for bound_string in input.split(",") {
-        let bound: (u64, u64) = match  extract_bounds(bound_string) {
+        let bound: (u64, u64) = match extract_bounds(bound_string) {
             Ok(val) => val,
             Err(_) => continue,
         };
@@ -60,11 +74,11 @@ fn check_id_range_validity_twice(lower_bound: u64, upper_bound: u64) -> u64 {
 }
 
 /// id checker for second challenge. the return value is the sum of all invalid ids where any given id consists of at least two times the same pattern
-/// 
+///
 /// Example:
 /// 11 => two times 1
 /// 111 => three times 1
-/// 123412341234 => three times 1234 
+/// 123412341234 => three times 1234
 fn check_id_range_validity_multiple(lower_bound: u64, upper_bound: u64) -> u64 {
     let mut similarity_counter: u64 = 0;
 
@@ -74,7 +88,7 @@ fn check_id_range_validity_multiple(lower_bound: u64, upper_bound: u64) -> u64 {
         for split_pos in 1..=((id_string.len() / 2) as usize) {
             // id_split is a tuple where the first value is the pattern and the second value is the rest of the number where we have to check whether there is a repeating pattern
             let id_split = id_string.split_at(split_pos);
-            
+
             // if the rest of the number is not divisable by the pattern lenght as whole number, then the check can be skipped
             if id_split.1.len() % id_split.0.len() != 0 {
                 continue;
@@ -85,14 +99,13 @@ fn check_id_range_validity_multiple(lower_bound: u64, upper_bound: u64) -> u64 {
                 break;
             }
         }
-
     }
 
     return similarity_counter;
 }
 
 fn one() -> u64 {
-    let file_path: &Path = Path::new("data/input.txt");
+    let file_path: &Path = Path::new("data/input_benjo.txt");
     let file_content: String = fs::read_to_string(file_path).expect("failed to read input.txt");
     let bounds = parse_id_bounds(&file_content);
 
@@ -105,7 +118,7 @@ fn one() -> u64 {
 }
 
 fn two() -> u64 {
-    let file_path: &Path = Path::new("data/input.txt");
+    let file_path: &Path = Path::new("data/input_benjo.txt");
     let file_content: String = fs::read_to_string(file_path).expect("failed to read input.txt");
     let bounds = parse_id_bounds(&file_content);
 
@@ -116,7 +129,6 @@ fn two() -> u64 {
 
     return similarity_counter;
 }
-
 
 fn main() {
     let res_one = one();
@@ -144,7 +156,6 @@ mod aoc_day_2_tester {
         (2121212118, 2121212124),
     ];
 
-
     #[test]
     fn parser_single() {
         let input: &str = "11-22";
@@ -171,7 +182,7 @@ mod aoc_day_2_tester {
 
         assert_eq!(similarity_counter, 33);
     }
-    
+
     #[test]
     fn bound_parser() {
         let file_path: &Path = Path::new("data/test.txt");
@@ -184,7 +195,7 @@ mod aoc_day_2_tester {
     #[test]
     fn id_validity_aoc_one() {
         let mut similarity_counter: u64 = 0;
-        
+
         for bounds in REF_VALUE_AOC.to_vec() {
             similarity_counter += check_id_range_validity_twice(bounds.0, bounds.1);
         }
@@ -195,12 +206,11 @@ mod aoc_day_2_tester {
     #[test]
     fn id_validity_aoc_two() {
         let mut similarity_counter: u64 = 0;
-        
+
         for bounds in REF_VALUE_AOC.to_vec() {
             similarity_counter += check_id_range_validity_multiple(bounds.0, bounds.1);
         }
 
         assert_eq!(similarity_counter, 4174379265);
     }
-
 }
