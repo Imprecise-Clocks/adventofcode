@@ -44,7 +44,7 @@ part_two :: proc() -> int {
 		}
 		index += 1
 	}
-	return index
+	return index + 1
 }
 
 main :: proc() {
